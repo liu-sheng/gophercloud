@@ -169,3 +169,89 @@ const SubnetPoolGetResult = `
     }
 }
 `
+
+const SubnetPoolCreateRequest = `
+{
+    "subnetpool": {
+        "name": "my_ipv4_pool",
+        "prefixes": [
+            "10.10.0.0/16",
+            "10.11.11.0/24"
+        ],
+        "address_scope_id": "3d4e2e2a-552b-42ad-a16d-820bbf3edaf3",
+        "min_prefixlen": 25,
+        "max_prefixlen": 30,
+        "description": "ipv4 prefixes"
+    }
+}
+`
+
+const SubnetPoolCreateResult = `
+{
+    "subnetpool": {
+        "address_scope_id": "3d4e2e2a-552b-42ad-a16d-820bbf3edaf3",
+        "created_at": "2018-01-01T00:00:15Z",
+        "default_prefixlen": "25",
+        "default_quota": null,
+        "description": "ipv4 prefixes",
+        "id": "55b5999c-c2fe-42cd-bce0-961a551b80f5",
+        "ip_version": 4,
+        "is_default": false,
+        "max_prefixlen": "30",
+        "min_prefixlen": "25",
+        "name": "my_ipv4_pool",
+        "prefixes": [
+            "10.10.0.0/16",
+            "10.11.11.0/24"
+        ],
+        "project_id": "1e2b9857295a4a3e841809ef492812c5",
+        "revision_number": 1,
+        "shared": false,
+        "tenant_id": "1e2b9857295a4a3e841809ef492812c5",
+        "updated_at": "2018-01-01T00:00:15Z"
+    }
+}
+`
+
+const SubnetPoolUpdateRequest = `
+{
+    "subnetpool": {
+        "name": "new_subnetpool_name",
+        "prefixes": [
+            "10.11.12.0/24",
+            "10.24.0.0/16"
+        ],
+        "max_prefixlen": 16,
+        "address_scope_id": "",
+        "default_quota": 0,
+        "description": ""
+    }
+}
+`
+
+const SubnetPoolUpdateResponse = `
+{
+    "subnetpool": {
+        "address_scope_id": null,
+        "created_at": "2018-01-03T07:21:34Z",
+        "default_prefixlen": 8,
+        "default_quota": null,
+        "description": null,
+        "id": "099546ca-788d-41e5-a76d-17d8cd282d3e",
+        "ip_version": 4,
+        "is_default": true,
+        "max_prefixlen": 16,
+        "min_prefixlen": 8,
+        "name": "new_subnetpool_name",
+        "prefixes": [
+            "10.8.0.0/16",
+            "10.11.12.0/24",
+            "10.24.0.0/16"
+        ],
+        "revision_number": 2,
+        "shared": false,
+        "tenant_id": "1e2b9857295a4a3e841809ef492812c5",
+        "updated_at": "2018-01-05T09:56:56Z"
+    }
+}
+`
