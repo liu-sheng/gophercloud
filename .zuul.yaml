@@ -15,6 +15,3 @@
     recheck-pike:
       jobs:
         - gophercloud-acceptance-test-pike
-    check-telefonica:
-      jobs:
-        - gophercloud-telefonica-acceptance-test
