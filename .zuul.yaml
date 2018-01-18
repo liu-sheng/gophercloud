@@ -1,5 +1,4 @@
 - project:
-    name: liu-sheng/gophercloud
     check:
       jobs:
         - gophercloud-unittest
