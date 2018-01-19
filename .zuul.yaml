@@ -15,3 +15,6 @@
     recheck-pike:
       jobs:
         - gophercloud-acceptance-test-pike
+    periodic:
+      jobs:
+        - gophercloud-acceptance-test
