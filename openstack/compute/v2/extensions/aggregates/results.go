@@ -31,6 +31,14 @@ type Aggregate struct {
 	// The date and time when the resource was updated,
 	// if the resource has not been updated, this field will show as null.
 	UpdatedAt time.Time `json:"-"`
+
+	// The date and time when the resource was deleted,
+	// if the resource has not been deleted yet, this field will be null.
+	DeletedAt time.Time `json:"-"`
+
+	// A boolean indicates whether this aggregate is deleted or not,
+	// if it has not been deleted, false will appear.
+	Deleted bool `json:"deleted"`
 }
 
 // UnmarshalJSON to override default
@@ -40,6 +48,7 @@ func (r *Aggregate) UnmarshalJSON(b []byte) error {
 		tmp
 		CreatedAt gophercloud.JSONRFC3339MilliNoZ `json:"created_at"`
 		UpdatedAt gophercloud.JSONRFC3339MilliNoZ `json:"updated_at"`
+		DeletedAt gophercloud.JSONRFC3339MilliNoZ `json:"deleted_at"`
 	}
 	err := json.Unmarshal(b, &s)
 	if err != nil {
@@ -49,6 +58,7 @@ func (r *Aggregate) UnmarshalJSON(b []byte) error {
 
 	r.CreatedAt = time.Time(s.CreatedAt)
 	r.UpdatedAt = time.Time(s.UpdatedAt)
+	r.DeletedAt = time.Time(s.DeletedAt)
 
 	return nil
 }
@@ -78,11 +88,7 @@ type aggregatesResult struct {
 	gophercloud.Result
 }
 
-type CreateResult struct {
-	aggregatesResult
-}
-
-func (r CreateResult) Extract() (*Aggregate, error) {
+func (r aggregatesResult) Extract() (*Aggregate, error) {
 	var s struct {
 		Aggregate *Aggregate `json:"aggregate"`
 	}
@@ -90,6 +96,22 @@ func (r CreateResult) Extract() (*Aggregate, error) {
 	return s.Aggregate, err
 }
 
+type CreateResult struct {
+	aggregatesResult
+}
+
+type GetResult struct {
+	aggregatesResult
+}
+
 type DeleteResult struct {
 	gophercloud.ErrResult
+}
+
+type UpdateResult struct {
+	aggregatesResult
+}
+
+type ActionResult struct {
+	aggregatesResult
 }
