@@ -13,9 +13,11 @@
       shell:
         cmd: |
           set -e
+          echo $(export |grep OS_BRANCH)
+          echo $(env |grep OS_BRANCH)
           set -o pipefail
           set -x
-          
+
           go get ./... || true
           ./script/acceptancetest -v 2>&1 | tee $TEST_RESULTS_TXT
         executable: /bin/bash
