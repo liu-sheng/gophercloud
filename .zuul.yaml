@@ -56,7 +56,7 @@
 - project:
     check:
       jobs:
-        - gophercloud-unittest
+        #- gophercloud-unittest
         - gophercloud-acceptance-test
     recheck-mitaka:
       jobs:
