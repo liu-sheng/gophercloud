@@ -13,13 +13,13 @@
       shell:
         cmd: |
           set -e
-          echo $(export |grep os_branch)
-          echo $(env |grep os_branch)
           set -o pipefail
           set -x
+          echo $(export |grep OS_BRANCH)
+          echo $(env |grep OS_BRANCH)
 
-          go get ./... || true
-          ./script/acceptancetest -v 2>&1 | tee $TEST_RESULTS_TXT
+          # go get ./... || true
+          # ./script/acceptancetest -v 2>&1 | tee $TEST_RESULTS_TXT
         executable: /bin/bash
         chdir: '{{ zuul.project.src_dir }}'
       environment: '{{ golang_env }}'
