@@ -24,4 +24,3 @@
         chdir: '{{ zuul.project.src_dir }}'
       environment:
         '{{ golang_env }}'
-        OS_BRANCH: '{{ os_branch }}'
