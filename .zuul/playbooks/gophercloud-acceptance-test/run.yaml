@@ -2,12 +2,12 @@
   become: yes
   roles:
     - clone-devstack-gate-to-workspace
-     - role: create-devstack-local-conf
-       enable_services:
-         - 'manila'
-         - 'designate'
-         - 'zun'
-     - install-devstack
+    - role: create-devstack-local-conf
+      enable_services:
+        - 'manila'
+        - 'designate'
+        - 'zun'
+    - install-devstack
   tasks:
     - name: Run acceptance tests with gophercloud
       shell:
