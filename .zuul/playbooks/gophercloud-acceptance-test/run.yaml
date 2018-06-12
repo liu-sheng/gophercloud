@@ -1,13 +1,13 @@
 - hosts: all
   become: yes
-  roles:
-    - clone-devstack-gate-to-workspace
-    - role: create-devstack-local-conf
-      enable_services:
-        - 'manila'
-        - 'designate'
-        - 'zun'
-    - install-devstack
+  #roles:
+  #  - clone-devstack-gate-to-workspace
+  #  - role: create-devstack-local-conf
+  #    enable_services:
+  #      - 'manila'
+  #      - 'designate'
+  #      - 'zun'
+  #  - install-devstack
   tasks:
     - name: Run acceptance tests with gophercloud
       shell:
@@ -22,4 +22,4 @@
           # ./script/acceptancetest -v 2>&1 | tee $TEST_RESULTS_TXT
         executable: /bin/bash
         chdir: '{{ zuul.project.src_dir }}'
-      environment: '{{ golang_env }}'
+      environment: '{{ golang_env | combine({"OS_BRANCH": {{ os_branch }}) }}'
