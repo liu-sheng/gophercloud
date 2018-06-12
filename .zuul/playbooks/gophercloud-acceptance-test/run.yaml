@@ -15,6 +15,7 @@
           set -e
           set -o pipefail
           set -x
+          echo '{{ os_branch }}'
           echo $(export |grep OS_BRANCH)
           echo $(env |grep OS_BRANCH)
 
