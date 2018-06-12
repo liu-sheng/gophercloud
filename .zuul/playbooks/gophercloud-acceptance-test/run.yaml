@@ -2,19 +2,19 @@
   become: yes
   roles:
     - clone-devstack-gate-to-workspace
-    - role: create-devstack-local-conf
-      enable_services:
-        - 'manila'
-        - 'designate'
-        - 'zun'
-    - install-devstack
+    # - role: create-devstack-local-conf
+    #   enable_services:
+    #     - 'manila'
+    #     - 'designate'
+    #     - 'zun'
+    # - install-devstack
   tasks:
-    - name: Run acceptance tests with gophercloud
+    - name: Run acceptance tests with gophercloud#
       shell:
         cmd: |
           set -e
-          echo $(export |grep OS_BRANCH)
-          echo $(env |grep OS_BRANCH)
+          echo $(export |grep os_branch)
+          echo $(env |grep os_branch)
           set -o pipefail
           set -x
 
